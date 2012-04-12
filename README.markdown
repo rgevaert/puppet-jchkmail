@@ -3,7 +3,7 @@ This is the jchkmail module.
 Usage
 =====
 
-  include jchkmail
+    include jchkmail
 
 You can override the default config:
 
