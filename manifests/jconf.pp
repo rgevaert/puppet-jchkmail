@@ -1,7 +1,11 @@
+# Class jchkmail::jconf
+# =====================
+#
+#
 define jchkmail::jconf ($source, $ensure = 'present')
 {
   File {
-    require => Class['jchkmail']
+    require => Class['jchkmail'],
   }
 
   file{

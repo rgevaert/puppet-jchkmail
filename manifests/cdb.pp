@@ -1,7 +1,11 @@
+# Class jchkmail::cdb
+# ===================
+#
+#
 define jchkmail::cdb ($source, $ensure = 'present')
 {
   File {
-    require => Class['jchkmail']
+    require => Class['jchkmail'],
   }
 
   file{

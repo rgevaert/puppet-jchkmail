@@ -1,11 +1,13 @@
+# Class jchkmail::conf
+# ====================
+#
+#
 class jchkmail::conf
 {
   file{
-    'j-chkmail.cf':
-      name   => '/etc/jchkmail/j-chkmail.cf',
+    '/etc/jchkmail/j-chkmail.cf':
       source => $jchkmail::jchkmailcf;
-    'j-ndc.cf':
-      name   => '/etc/jchkmail/j-ndc.cf',
+    '/etc/jchkmail/j-ndc.cf':
       source => $jchkmail::jndccf;
   }
 

@@ -1,5 +1,9 @@
+# Class jchkmail::params
+# ======================
+#
+#
 class jchkmail::params
 {
-  $jchkmailcf = 'puppet:///jchkmail/j-chkmail.cf'
-  $jndccf     = 'puppet:///jchkmail/j-ndc.cf'
+  $jchkmailcf = 'puppet:///modules/jchkmail/j-chkmail.cf'
+  $jndccf     = 'puppet:///modules/jchkmail/j-ndc.cf'
 }

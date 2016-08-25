@@ -1,11 +1,17 @@
+# Class jchkmail
+# ==============
+#
+#
+#lint:ignore:class_inherits_from_params_class
 class jchkmail (
   $jchkmailcf = $jchkmail::params::jchkmailcf,
   $jndccf     = $jchkmail::params::jndccf
-) inherits jchkmail::params
-
+) inherits ::jchkmail::params
 {
-  class{'jchkmail::package':;} ~>
-    class{'jchkmail::conf':;} ~>
-    class{'jchkmail::service':;} ~>
-    class{'jchkmail::cdbupdate':;}
+
+    class{'::jchkmail::package':;} ~>
+    class{'::jchkmail::conf':;} ~>
+    class{'::jchkmail::service':;} ~>
+    class{'::jchkmail::cdbupdate':;}
 }
+# lint:endignore
