@@ -6,7 +6,7 @@ class jchkmail::cdbupdate
 {
   exec {
     'cdb-update':
-      command     => '/usr/bin/make -C /etc/jchkmail/cdb',
+      command     => 'service jchkmail restart ; /usr/bin/make -C /etc/jchkmail/cdb',
       refreshonly => true;
   }
 }
