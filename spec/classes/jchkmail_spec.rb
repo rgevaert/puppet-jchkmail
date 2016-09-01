@@ -18,7 +18,7 @@ describe 'jchkmail' do
           it { is_expected.to contain_class('jchkmail::params') }
           it { is_expected.to contain_class('jchkmail::service') }
           it { is_expected.to contain_exec('cdb-update').with(
-            :command     => '/usr/sbin/service jchkmail restart ; /usr/bin/make -C /etc/jchkmail/cdb',
+            :command     => '/usr/sbin/service jchkmail reload ; /usr/bin/make -C /etc/jchkmail/cdb',
             :refreshonly => true,) }
           it { is_expected.to contain_file('/etc/jchkmail/j-chkmail.cf').with(
             :source => 'puppet:///modules/jchkmail/j-chkmail.cf',) }
