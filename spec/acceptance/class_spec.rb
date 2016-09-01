@@ -9,17 +9,8 @@ describe 'jchkmail class' do
       EOS
 
       # Run it twice and test for idempotency
-      apply_manifest(pp, :catch_failures => true)
-      apply_manifest(pp, :catch_failures => true)
+#      apply_manifest(pp, :catch_failures => true)
+#      apply_manifest(pp, :catch_failures => true)
     end
-
-    describe user('jchkmail') do
-      it { should exist }
-    end
-
-    describe group('jchkmail') do
-      it { should exist }
-    end
-
   end
 end
