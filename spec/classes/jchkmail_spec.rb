@@ -52,11 +52,14 @@ describe 'jchkmail' do
         end
 
         context "jchkmail class with parameters" do
-          let(:params) {{ :check_badrcpts => 'NO' }}
+          let(:params) {{ :config => { 'PRESENCE' => 'HIDE', 'MAX_BADRCPTS' => '100' } }}
 
           it { is_expected.to contain_file('/etc/jchkmail/j-chkmail.cf').with(
             :ensure  => 'file',
-            :content => /^CHECK_BADRCPTS                     NO$/,) }
+            :content => /^PRESENCE HIDE$/,) }
+          it { is_expected.to contain_file('/etc/jchkmail/j-chkmail.cf').with(
+            :ensure  => 'file',
+            :content => /^MAX_BADRCPTS 100$/,) }
         end
       end
     end

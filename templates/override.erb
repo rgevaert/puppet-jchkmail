@@ -2,17 +2,6 @@
 ## Override parameters for j-chkmail ##
 #######################################
 
-CHECK_BADRCPTS
-#     Check the number or Bad Recipients
-#  Syntax : -----
-#     VALUES :  NO  YES 
-CHECK_BADRCPTS                     <%= scope.lookupvar('jchkmail::check_badrcpts')  %>
-
-MAX_BADRCPTS
-#     Maximum number of Bad Recipients over 4 hours
-#  Syntax : -----
-MAX_BADRCPTS                       <%= scope.lookupvar('jchkmail::max_badrcpts')  %>
-
 <% unless scope.lookupvar('jchkmail::config').empty? -%>
 # Override configuration put here by Puppet through jchkmail::config hash
 <% scope.lookupvar('jchkmail::config').sort.map do |key, value| -%>

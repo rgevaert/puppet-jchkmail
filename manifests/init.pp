@@ -5,8 +5,7 @@
 #lint:ignore:class_inherits_from_params_class
 class jchkmail (
   $jchkmail_version = $jchkmail::params::jchkmail_version,
-  $check_badrcpts   = $jchkmail::params::check_badrcpts,
-  $max_badrcpts     = $jchkmail::params::max_badrcpts,
+  $config           = $jchkmail::params::config,
   $jndccf           = $jchkmail::params::jndccf
 ) inherits ::jchkmail::params
 {
