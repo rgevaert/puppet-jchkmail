@@ -21,7 +21,8 @@ describe 'jchkmail' do
             :command     => '/usr/sbin/service jchkmail reload ; /usr/bin/make -C /etc/jchkmail/cdb',
             :refreshonly => true,) }
           it { is_expected.to contain_file('/etc/jchkmail/j-chkmail.cf').with(
-            :source => 'puppet:///modules/jchkmail/j-chkmail.cf',) }
+            :ensure  => 'file',
+            :content => /^CHECK_BADRCPTS                     YES$/,) }
           it { is_expected.to contain_file('/etc/jchkmail/j-ndc.cf').with(
             :source => 'puppet:///modules/jchkmail/j-ndc.cf',) }
           it { is_expected.to contain_file('/var/lib/jchkmail').with(
@@ -48,6 +49,14 @@ describe 'jchkmail' do
             :hasrestart => 'true',
             :enable     => 'true',
             :pattern    => 'j-greyd',) }
+        end
+
+        context "jchkmail class with parameters" do
+          let(:params) {{ :check_badrcpts => 'NO' }}
+
+          it { is_expected.to contain_file('/etc/jchkmail/j-chkmail.cf').with(
+            :ensure  => 'file',
+            :content => /^CHECK_BADRCPTS                     NO$/,) }
         end
       end
     end
