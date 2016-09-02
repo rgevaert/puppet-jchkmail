@@ -2,8 +2,10 @@
 # =====================
 #
 #
-define jchkmail::jconf ($source, $ensure = 'present')
-{
+define jchkmail::jconf (
+  String $source,
+  String $ensure = 'present'
+){
   File {
     require => Class['jchkmail'],
   }

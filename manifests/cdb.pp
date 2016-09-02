@@ -2,8 +2,10 @@
 # ===================
 #
 #
-define jchkmail::cdb ($source, $ensure = 'present')
-{
+define jchkmail::cdb (
+  String $source,
+  String $ensure = 'present'
+){
   File {
     require => Class['jchkmail'],
   }

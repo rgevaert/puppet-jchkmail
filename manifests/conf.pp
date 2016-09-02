@@ -3,7 +3,7 @@
 #
 #
 class jchkmail::conf(
-  $jchkmail_version = $jchkmail::jchkmail_version
+  String $jchkmail_version = $jchkmail::jchkmail_version
 ){
   file{
     '/etc/jchkmail/j-chkmail.cf':

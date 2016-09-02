@@ -1,3 +1,6 @@
+ENV['PUPPET_INSTALL_VERSION']='4.5.0'
+ENV['BEAKER_PUPPET_AGENT_VERSION']='1.5.1'
+
 require 'rubygems'
 require 'bundler/setup'
 

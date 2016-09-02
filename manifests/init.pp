@@ -2,11 +2,10 @@
 # ==============
 #
 #
-#lint:ignore:class_inherits_from_params_class
 class jchkmail (
-  $jchkmail_version = $jchkmail::params::jchkmail_version,
-  $config           = $jchkmail::params::config,
-  $jndccf           = $jchkmail::params::jndccf
+  String $jchkmail_version     = $jchkmail::params::jchkmail_version,
+  Hash[String, String] $config = $jchkmail::params::config,
+  String $jndccf               = $jchkmail::params::jndccf
 ) inherits ::jchkmail::params
 {
 
@@ -15,4 +14,3 @@ class jchkmail (
     class{'::jchkmail::service':;} ~>
     class{'::jchkmail::cdbupdate':;}
 }
-# lint:endignore
