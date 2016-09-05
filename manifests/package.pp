@@ -1,3 +1,7 @@
+# Class jchkmail::package
+# =======================
+#
+#
 class jchkmail::package
 {
   package {

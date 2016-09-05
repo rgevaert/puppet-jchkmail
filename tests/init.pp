@@ -1,1 +1,1 @@
-include jchkmail
+include ::jchkmail
