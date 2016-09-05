@@ -5,7 +5,12 @@ describe 'jchkmail class' do
     # Using puppet_apply as a helper
     it 'should work idempotently with no errors' do
       pp = <<-EOS
-      class { 'jchkmail': }
+      class { 'jchkmail':
+        config => {
+          'PRESENCE'     => 'HIDE',
+          'MAX_BADRCPTS' => '100'
+        }
+      }
       EOS
 
       # Run it twice and test for idempotency
@@ -102,6 +107,14 @@ describe 'jchkmail class' do
     describe service('jgreyd') do
       it { should be_enabled }
       it { should be_running }
+    end
+
+    describe command('j-ndc DUMPCF | grep PRESENCE') do
+      its(:stdout) { should match /PRESENCE                           HIDE/ }
+    end
+
+    describe command('j-ndc DUMPCF | grep MAX_BADRCPTS') do
+      its(:stdout) { should match /MAX_BADRCPTS                       100/ }
     end
 
   end

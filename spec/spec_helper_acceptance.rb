@@ -33,7 +33,6 @@ EOF
       elsif fact_on(host, 'osfamily') == 'RedHat'
         # fixme
       end
-
     end
   end
 end
