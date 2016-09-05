@@ -61,6 +61,7 @@ describe 'jchkmail' do
             :ensure  => 'file',
             :content => /^MAX_BADRCPTS 100$/,) }
         end
+
       end
     end
   end

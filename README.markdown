@@ -26,3 +26,10 @@ Defining a different makefile for the cdb maps:
       'cdb/Makefile':
         source => <path>;
     }
+
+Override parameters can be defined by the user by passing a hash
+
+    $config = {
+      'PRESENCE'     => 'HIDE',
+      'MAX_BADRCPTS' => '100'
+    }
