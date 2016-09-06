@@ -1,0 +1,1114 @@
+#
+# j-chkmail - (c) Ecole des Mines de Paris 2008, 2009
+# Creation date : Wed Aug  3 10:03:32 2016
+# Configuration file template : default values
+#
+########################################################################
+#    SECTION  :  General Parameters
+########################################################################
+
+# VERSION
+#     Configuration file version
+#  Syntax : -----
+VERSION                            v2.6.2
+
+# MYSELF
+#     My own names, IPs and aliases
+#  Syntax : -----
+MYSELF                             127.0.0.1 HOSTNAME
+
+# J_HOSTNAME
+#     How to get mailserver hostname ?
+#  Syntax : -----
+#     VALUES :  SYSTEM  SENDMAIL  OTHER 
+J_HOSTNAME                         SYSTEM
+
+# PRESENCE
+#     Show/Hide presence (presence header)
+#  Syntax : -----
+#     VALUES :  SHOW  HIDE 
+PRESENCE                           SHOW
+
+# FOOTER
+#     Show/Hide j-chkmail signature at warning message
+#  Syntax : -----
+#     VALUES :  SHOW  HIDE 
+FOOTER                             SHOW
+
+# FILTER_URL
+#     Filter URL (to be included on X-Miltered header)
+#  Syntax : -----
+FILTER_URL                         http : // j-chkmail dot ensmp dot fr
+
+# POLICY_URL
+#     Policy filtering URL - appended to reply messages
+#  Syntax : -----
+POLICY_URL                         
+
+# DAEMON_FILTER_DISABLE
+#     SMTP daemons to disable filtering
+#  Syntax : NAME:PORT, NAME:PORT, ...
+DAEMON_FILTER_DISABLE              
+
+########################################################################
+#    SECTION  :  System parameters and Resources
+########################################################################
+
+# USER
+#     Filter USER ID
+#  Syntax : -----
+USER                               smmsp
+
+# GROUP
+#     Filter GROUP ID
+#  Syntax : -----
+GROUP                              smmsp
+
+# FILE_DESCRIPTORS
+#     Number of available file descriptors (integer value or MAX)
+#  Syntax : -----
+FILE_DESCRIPTORS                   MAX
+
+# FD_FREE_SOFT_LIMIT
+#     Available file descriptors soft lower bound
+#  Syntax : -----
+FD_FREE_SOFT_LIMIT                 100
+
+# FD_FREE_HARD_LIMIT
+#     Available file descriptors hard lower bound
+#  Syntax : -----
+FD_FREE_HARD_LIMIT                 50
+
+# USE_SELECT_LIMIT
+#     Available file descriptors limited by select function
+#  Syntax : -----
+#     VALUES :  NO  YES 
+USE_SELECT_LIMIT                   YES
+
+# CPU_IDLE_SOFT_LIMIT
+#     SOFT CPU Idle threshold to accept connections
+#  Syntax : -----
+CPU_IDLE_SOFT_LIMIT                0
+
+# CPU_IDLE_HARD_LIMIT
+#     HARD CPU Idle threshold to accept connections
+#  Syntax : -----
+CPU_IDLE_HARD_LIMIT                0
+
+# MAX_OPEN_CONNECTIONS
+#     Maximum number of simultaneous open connections
+#  Syntax : -----
+MAX_OPEN_CONNECTIONS               500
+
+########################################################################
+#    SECTION  :  MTA Communications
+########################################################################
+
+# SOCKET
+#     Communication socket between sendmail and j-chkmail
+#  Syntax : inet:PORT@HOSTNAME | local:SOCKET_PATH
+SOCKET                             local:/var/run/jchkmail/j-chkmail.sock
+
+# SM_TIMEOUT
+#     Inactivity timeout (milter <-> sendmail connection)
+#  Syntax : -----
+SM_TIMEOUT                         600s
+
+########################################################################
+#    SECTION  :  Control channel
+########################################################################
+
+# CTRL_CHANNEL_ENABLE
+#     Enable remote control channel
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CTRL_CHANNEL_ENABLE                YES
+
+# CTRL_SOCKET
+#     Control socket
+#  Syntax : inet:PORT@HOSTNAME | local:SOCKET_PATH
+CTRL_SOCKET                        inet:2010@127.0.0.1
+
+# CTRL_ACCESS
+#     How to do access control over control channel
+#  Syntax : -----
+#     VALUES :  NONE  ACCESS 
+CTRL_ACCESS                        NONE
+
+########################################################################
+#    SECTION  :  Configuration Files
+########################################################################
+
+# CONFDIR
+#     j-chkmail configuration directory
+#  Syntax : -----
+CONFDIR                            /etc/mail/jchkmail
+
+# ERROR_MSG_FILE
+#     Notification template
+#  Syntax : -----
+ERROR_MSG_FILE                     j-error-msg
+
+# AUTO_RELOAD_TABLES
+#     Periodic configuration reload interval
+#  Syntax : -----
+AUTO_RELOAD_TABLES                 3600s
+
+# MODULES_CF
+#     Modules
+#  Syntax : -----
+MODULES_CF                         j-modules
+
+########################################################################
+#    SECTION  :  Logging
+########################################################################
+
+# LOG_FACILITY
+#     syslog facility
+#  Syntax : -----
+LOG_FACILITY                       local5
+
+# LOG_LEVEL
+#     j-chkmail log level
+#  Syntax : -----
+LOG_LEVEL                          10
+
+# LOG_SEVERITY
+#     Add a severity tag to syslog lines
+#  Syntax : -----
+#     VALUES :  NO  YES 
+LOG_SEVERITY                       NO
+
+# CLUSTER
+#     Filter sharing resources inside a cluster (spool/server)
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CLUSTER                            NO
+
+# LOG_ATTACHMENTS
+#     Log attached files (using syslog)
+#  Syntax : -----
+#     VALUES :  NO  YES 
+LOG_ATTACHMENTS                    NO
+
+# LOG_THROTTLE
+#     Periodically log server throttle (using syslog)
+#  Syntax : -----
+#     VALUES :  NO  YES 
+LOG_THROTTLE                       YES
+
+# LOG_LOAD
+#     Periodically log CPU load (using syslog)
+#  Syntax : -----
+#     VALUES :  NO  YES 
+LOG_LOAD                           YES
+
+# LOG_GREY_CLEANING
+#     Log results of greylist database maintenance
+#  Syntax : -----
+#     VALUES :  NO  YES 
+LOG_GREY_CLEANING                  NO
+
+# DUMP_COUNTERS
+#     Periodically dump internal counters
+#  Syntax : -----
+#     VALUES :  NO  YES 
+DUMP_COUNTERS                      YES
+
+# STATS_INTERVAL
+#     Time interval used to dump periodical data (load, throttle, ...)
+#  Syntax : -----
+STATS_INTERVAL                     300
+
+# HISTORY_ENTRIES
+#     Number of entries of history (times 1024)
+#  Syntax : -----
+HISTORY_ENTRIES                    256
+
+########################################################################
+#    SECTION  :  Spool and state Files
+########################################################################
+
+# WORKROOT
+#     j-chkmail root directory 
+#  Syntax : -----
+WORKROOT                           /var/lib/jchkmail
+
+# WORKDIR
+#     j-chkmail work directory (state and specific logs)
+#  Syntax : -----
+WORKDIR                            /var/lib/jchkmail/files
+
+# SPOOLDIR
+#     j-chkmail message spool directory
+#  Syntax : -----
+SPOOLDIR                           /var/spool/jchkmail
+
+# PID_FILE
+#     j-chkmail pid file
+#  Syntax : -----
+PID_FILE                           /var/run/jchkmail/j-chkmail.pid
+
+# STATS_FILE
+#     STATS_FILE
+#  Syntax : -----
+STATS_FILE                         file:j-stats
+
+########################################################################
+#    SECTION  :  Quarantine and Archive management
+########################################################################
+
+# CLEANUP_INTERVAL
+#     Quarantine directory clean-up interval
+#  Syntax : -----
+CLEANUP_INTERVAL                   6h
+
+# QUARANTINE_LIFETIME
+#     Quarantine
+#  Syntax : -----
+QUARANTINE_LIFETIME                1d
+
+# QUARANTINE_ADD_FROM_LINE
+#     Add From line to quarantine file ?
+#  Syntax : -----
+#     VALUES :  NO  YES 
+QUARANTINE_ADD_FROM_LINE           YES
+
+# QUARANTINE_LOG_FILE
+#     Quarantine log file
+#  Syntax : -----
+QUARANTINE_LOG_FILE                file:j-quarantine
+
+# ARCHIVE
+#     Archiving messages
+#  Syntax : -----
+#     VALUES :  NO  YES 
+ARCHIVE                            NO
+
+########################################################################
+#    SECTION  :  Modules
+########################################################################
+
+# MODDIR
+#     Modules
+#  Syntax : -----
+MODDIR                             /usr/lib/j-chkmail
+
+########################################################################
+#    SECTION  :  Databases
+########################################################################
+
+# WDBDIR
+#     j-chkmail working databases directory
+#  Syntax : -----
+WDBDIR                             /var/lib/jchkmail/wdb
+
+########################################################################
+#    SECTION  :  Constant Databases
+########################################################################
+
+# CDBDIR
+#     j-chkmail constant databases directory
+#  Syntax : -----
+CDBDIR                             /var/lib/jchkmail/cdb
+
+# DB_CACHE_SIZE
+#     BerkeleyDB constant databases cache size
+#  Syntax : -----
+DB_CACHE_SIZE                      32M
+
+# DB_POLICY
+#     Policy database path
+#  Syntax : -----
+DB_POLICY                          j-policy.db
+
+# POLICY_CONFLICT
+#     What to do if users policy conflit
+#  Syntax : -----
+#     VALUES :  DEFAULT  ONE_WIN  MAJORITY_WIN 
+POLICY_CONFLICT                    DEFAULT
+
+# FROM_PASS_TOKEN
+#     Token
+#  Syntax : -----
+FROM_PASS_TOKEN                    
+
+# TO_PASS_TOKEN
+#     Token 
+#  Syntax : -----
+TO_PASS_TOKEN                      
+
+########################################################################
+#    SECTION  :  Resolve cache database
+########################################################################
+
+# RESOLVE_CACHE_ENABLE
+#     Address resolution (IP address / hostname) cache
+#  Syntax : -----
+#     VALUES :  NO  YES 
+RESOLVE_CACHE_ENABLE               YES
+
+# RESOLVE_CACHE_SYNC
+#     Interval between cache synchronization
+#  Syntax : -----
+RESOLVE_CACHE_SYNC                 1m
+
+# RESOLVE_CACHE_CHECK
+#     Interval between cache maintenance
+#  Syntax : -----
+RESOLVE_CACHE_CHECK                1h
+
+# RESOLVE_CACHE_EXPIRE
+#     Expiration age of non refreshed entries
+#  Syntax : -----
+RESOLVE_CACHE_EXPIRE               2d
+
+########################################################################
+#    SECTION  :  Sending Notification Messages
+########################################################################
+
+# NOTIFY_SENDER
+#     Enable sender notification
+#  Syntax : -----
+#     VALUES :  NO  YES 
+NOTIFY_SENDER                      NO
+
+# NOTIFY_RCPT
+#     Enable recipient notification
+#  Syntax : -----
+#     VALUES :  NO  YES 
+NOTIFY_RCPT                        YES
+
+# J_SENDER
+#     Sender address used for notification message
+#  Syntax : -----
+#     VALUES :  SENDER  OTHER 
+J_SENDER                           SENDER
+
+# J_SUBJECT
+#     Subject of replacement notification message
+#  Syntax : -----
+#     VALUES :  SUBJECT  OTHER 
+J_SUBJECT                          SUBJECT
+
+########################################################################
+#    SECTION  :  Built-in X-File scanner
+########################################################################
+
+# XFILES
+#     What to do with X-files ? (OK, REJECT, NOTIFY, DISCARD)
+#  Syntax : -----
+#     VALUES :  OK  REJECT  NOTIFY  DISCARD  X-HEADER 
+XFILES                             OK
+
+# XFILES_FILE
+#     X-Files (file extension + MIME type) configuration
+#  Syntax : -----
+XFILES_FILE                        j-xfiles
+
+# XFILE_SAVE_MSG
+#     Shall quarantine messages containing X-Files ?
+#  Syntax : -----
+#     VALUES :  NO  YES 
+XFILE_SAVE_MSG                     YES
+
+# XFILE_SUBJECT_TAG
+#     Tag to be inserted on Subject
+#  Syntax : -----
+XFILE_SUBJECT_TAG                  
+
+# XFILES_LOG_FILE
+#     Detected X-Files log file
+#  Syntax : -----
+XFILES_LOG_FILE                    file:j-files
+
+########################################################################
+#    SECTION  :  External virus scanner
+########################################################################
+
+# SCANNER_ACTION
+#     
+#  Syntax : -----
+#     VALUES :  OK  REJECT  NOTIFY  DISCARD  X-HEADER 
+SCANNER_ACTION                     OK
+
+# SCANNER_SOCK
+#     Communication socket between j-chkmail and external scanner
+#  Syntax : inet:PORT@HOSTNAME | local:SOCKET_PATH
+SCANNER_SOCK                       inet:2002@localhost
+
+# SCANNER_PROTOCOL
+#     Protocol
+#  Syntax : -----
+#     VALUES :  INTERNAL  CLAMAV 
+SCANNER_PROTOCOL                   CLAMAV
+
+# SCANNER_TIMEOUT
+#     Timeout waiting for the scanner answer
+#  Syntax : -----
+SCANNER_TIMEOUT                    15s
+
+# SCANNER_REJECT_ON_ERROR
+#     Reject messages when scanner call returns an error
+#  Syntax : -----
+#     VALUES :  NO  YES 
+SCANNER_REJECT_ON_ERROR            NO
+
+# SCANNER_MAX_MSG_SIZE
+#     Max message size to pass to scanner
+#  Syntax : -----
+SCANNER_MAX_MSG_SIZE               100K
+
+# SCANNER_SAVE
+#     Shall messages be quarantined ???
+#  Syntax : -----
+#     VALUES :  NO  YES 
+SCANNER_SAVE                       YES
+
+# VIRUS_LOG_FILE
+#     Detected Virus log file
+#  Syntax : file:filename or udp:port@hostname
+VIRUS_LOG_FILE                     file:j-virus
+
+########################################################################
+#    SECTION  :  Antispam checks (bayesian filter)
+########################################################################
+
+# BAYESIAN_FILTER
+#     Enable Bayesian filter
+#  Syntax : -----
+#     VALUES :  NO  YES 
+BAYESIAN_FILTER                    NO
+
+# BAYES_MAX_MESSAGE_SIZE
+#     Max message size
+#  Syntax : -----
+BAYES_MAX_MESSAGE_SIZE             100K
+
+# BAYES_MAX_PART_SIZE
+#     Max message part size
+#  Syntax : -----
+BAYES_MAX_PART_SIZE                30K
+
+# BAYES_HAM_SPAM_RATIO
+#     Ratio HAM/SPAM (times 1000)
+#  Syntax : -----
+BAYES_HAM_SPAM_RATIO               1000
+
+# BAYES_NB_TOKENS
+#     Number of tokens to consider
+#  Syntax : -----
+BAYES_NB_TOKENS                    48
+
+# BAYES_UNKNOWN_TOKEN_PROB
+#     Probability assigned to unknown tokens (times 1000)
+#  Syntax : -----
+BAYES_UNKNOWN_TOKEN_PROB           500
+
+# ACTIVE_LEARNING_MARGIN
+#     Active learning used in the statistical filter
+#  Syntax : 0.0 < margin < 0.5
+ACTIVE_LEARNING_MARGIN             0.35
+
+# DB_BAYES
+#     Path of bayes tokens database
+#  Syntax : -----
+DB_BAYES                           j-bayes.db
+
+########################################################################
+#    SECTION  :  Antispam content check - URL Filtering (URLBL)
+########################################################################
+
+# SPAM_URLBL
+#     Do pattern matching
+#  Syntax : -----
+#     VALUES :  NO  YES 
+SPAM_URLBL                         YES
+
+# DB_URLBL
+#     Database Real-Time URL Blacklist (used for content checking)
+#  Syntax : -----
+DB_URLBL                           j-urlbl.db
+
+# DNS_URLBL
+#     DNS Real-Time URL Blacklist (used for content checking)
+#  Syntax : RBL[/CODE[/SCORE]] - multi.surbl.org/127.0.0.1/10
+DNS_URLBL                          j-tables:DNS-URLBL
+
+########################################################################
+#    SECTION  :  Antispam content check - Pattern Matching (REGEX)
+########################################################################
+
+# SPAM_REGEX
+#     Do pattern matching
+#  Syntax : -----
+#     VALUES :  NO  YES 
+SPAM_REGEX                         YES
+
+# REGEX_FILE
+#     Regular expressions configuration file
+#  Syntax : -----
+REGEX_FILE                         j-regex
+
+# REGEX_MAX_SCORE
+#     Stop doing pattern matching when score is reached
+#  Syntax : -----
+REGEX_MAX_SCORE                    50
+
+# SPAM_REGEX_MAX_MSG_SIZE
+#     Max message size to do pattern matching
+#  Syntax : -----
+SPAM_REGEX_MAX_MSG_SIZE            40000
+
+# SPAM_REGEX_MAX_MIME_SIZE
+#     Max message size to do pattern matching
+#  Syntax : -----
+SPAM_REGEX_MAX_MIME_SIZE           15000
+
+# DUMP_FOUND_REGEX
+#     Log founded regular expressions to file
+#  Syntax : -----
+#     VALUES :  NO  YES 
+DUMP_FOUND_REGEX                   YES
+
+# REGEX_LOG_FILE
+#     Matched pattern log file
+#  Syntax : -----
+REGEX_LOG_FILE                     file:j-regex
+
+########################################################################
+#    SECTION  :  Antispam content check - Heuristic filtering (ORACLE)
+########################################################################
+
+# SPAM_ORACLE
+#     Do heuristic filtering
+#  Syntax : -----
+#     VALUES :  NO  YES 
+SPAM_ORACLE                        YES
+
+# ORACLE_SCORES_FILE
+#     Oracle scores
+#  Syntax : -----
+ORACLE_SCORES_FILE                 j-oracle:ORACLE-SCORES
+
+# ORACLE_DATA_FILE
+#     Some oracle definitions
+#  Syntax : -----
+ORACLE_DATA_FILE                   j-oracle:ORACLE-DATA
+
+# LOG_LEVEL_ORACLE
+#     Heuristic filter log level (0, 1 or 2)
+#  Syntax : -----
+LOG_LEVEL_ORACLE                   1
+
+# ORACLE_STATS_FILE
+#     Statistics for Oracle (dumped each STATISTICS_INTERVAL seconds)
+#  Syntax : -----
+ORACLE_STATS_FILE                  oracle-stats.log
+
+# ORACLE_COUNTERS_FILE
+#     Persistent state of Oracle
+#  Syntax : -----
+ORACLE_COUNTERS_FILE               oracle-counters.log
+
+########################################################################
+#    SECTION  :  Antispam content check - Resulting score handling
+########################################################################
+
+# SCORE_ON_SUBJECT
+#     Shall message score be inserted on Subject Header ?
+#  Syntax : -----
+#     VALUES :  NO  YES 
+SCORE_ON_SUBJECT                   NO
+
+# SCORE_ON_SUBJECT_TAG
+#     Tag to be inserted on Subject ?
+#  Syntax : -----
+SCORE_ON_SUBJECT_TAG               
+
+# XSTATUS_HEADER
+#     Status header
+#  Syntax : -----
+XSTATUS_HEADER                     X-j-chkmail-Status
+
+# XSTATUS_HEADER_HI_CONDITION
+#     When to add a 'X-j-chkmail-Status: HI' Header
+#  Syntax : Ex : (U=####|B=0.9|B=0.8|XXXX.*B=0.7)
+XSTATUS_HEADER_HI_CONDITION        score > 0.75
+
+# XSTATUS_HEADER_LO_CONDITION
+#     When to add a 'X-j-chkmail-Status: LO' Header
+#  Syntax : Ex : (U=####|B=0.9|B=0.8|XXXX.*B=0.7)
+XSTATUS_HEADER_LO_CONDITION        score > 0.65
+
+# XSTATUS_HEADER_UNSURE_CONDITION
+#     When to add a 'X-j-chkmail-Status: UNSURE' Header
+#  Syntax : Ex : (U=####|B=0.9|B=0.8|XXXX.*B=0.7)
+XSTATUS_HEADER_UNSURE_CONDITION    score > 0.25
+
+# XSTATUS_HEADER_HAM_CONDITION
+#     When to add a 'X-j-chkmail-Status: HAM' Header
+#  Syntax : Ex : (U=####|B=0.9|B=0.8|XXXX.*B=0.7)
+XSTATUS_HEADER_HAM_CONDITION       score < 0.25
+
+# XSTATUS_REJECT_CONDITION
+#     Reject message if this regular expression matches score from X-j-chkmail-score header
+#  Syntax : Ex : (U=####|B=0.9|B=0.8|XXXX.*B=0.7)
+XSTATUS_REJECT_CONDITION           
+
+# XSTATUS_REJECT_ONLY_UNKNOWN
+#     
+#     VALUES :  NO  YES 
+XSTATUS_REJECT_ONLY_UNKNOWN        YES
+
+# XSTATUS_QUARANTINE_CONDITION
+#     If this regular expression matches X-j-chkmail-score header, the message is quarantined
+#  Syntax : Ex : (U=####|B=0.9|B=0.8|XXXX.*B=0.7)
+XSTATUS_QUARANTINE_CONDITION       
+
+# REMOVE_HEADERS
+#     List of headers to remove
+#  Syntax : NONE | List of comma separated headers
+REMOVE_HEADERS                     NONE
+
+# REMOVE_SCORES
+#     List of headers to remove
+#  Syntax : NONE | List of comma separated servers
+REMOVE_SCORES                      NONE
+
+########################################################################
+#    SECTION  :  DNS Realtime Black/White Lists
+########################################################################
+
+# DNS_IPRBWL
+#     Real-Time Black/White Lists 
+DNS_IPRBWL                         j-tables:DNS-IP-RBWL
+
+########################################################################
+#    SECTION  :  Antispam checks (SMTP client behaviour)
+########################################################################
+
+# CHECK_CONN_RATE
+#     Enable connection rate limiting
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_CONN_RATE                    YES
+
+# MAX_CONN_RATE
+#     Max connection rate (can be redefined at j-policy database)
+#  Syntax : -----
+MAX_CONN_RATE                      15
+
+# CHECK_OPEN_CONNECTIONS
+#     Enable simultaneous connections limiting 
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_OPEN_CONNECTIONS             YES
+
+# MAX_CONN_OPEN
+#     Max open connections for a single IP on unknown network
+#  Syntax : -----
+MAX_CONN_OPEN                      10
+
+# CHECK_EMPTY_CONNECTIONS
+#     Check the number of empty connections
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_EMPTY_CONNECTIONS            NO
+
+# MAX_EMPTY_CONN
+#     Maximum number of empty connections over 4 hours
+#  Syntax : -----
+MAX_EMPTY_CONN                     20
+
+# DELAY_CHECKS
+#     Delay reject decisions
+#     VALUES :  NO  YES 
+DELAY_CHECKS                       NO
+
+########################################################################
+#    SECTION  :  Recipient checks
+########################################################################
+
+# CHECK_BADRCPTS
+#     Check the number or Bad Recipients
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_BADRCPTS                     YES
+
+# MAX_BADRCPTS
+#     Maximum number of Bad Recipients over 4 hours
+#  Syntax : -----
+MAX_BADRCPTS                       10
+
+# CHECK_RCPT_ACCESS
+#     Recipient Access and validation
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_RCPT_ACCESS                  YES
+
+# DB_RCPT
+#     Recipient database path
+#  Syntax : -----
+DB_RCPT                            j-rcpt.db
+
+# SPAMTRAP_RESULT
+#     Result from SPAM TRAP check
+#  Syntax : -----
+#     VALUES :  OK  REJECT  TEMPFAIL 
+SPAMTRAP_RESULT                    OK
+
+# CHECK_SPAMTRAP_HISTORY
+#     Reject connections from clients sending messages to spam traps
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_SPAMTRAP_HISTORY             NO
+
+# CHECK_RCPT_RATE
+#     Limit recipient rate for each SMTP client
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_RCPT_RATE                    NO
+
+# MAX_RCPT_RATE
+#     Max recipient rate (can be redefined at j-policy database)
+#  Syntax : -----
+MAX_RCPT_RATE                      100
+
+# CHECK_NB_RCPT
+#     Check the number of recipients for each message
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_NB_RCPT                      YES
+
+# MAX_RCPT
+#     Max recipient per message for connections coming from unknown network
+#  Syntax : -----
+MAX_RCPT                           200
+
+# CHECK_MSG_RATE
+#     Limit recipient rate for each SMTP client
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_MSG_RATE                     YES
+
+# MAX_MSG_RATE
+#     Max message rate (can be redefined at j-policy database)
+#  Syntax : -----
+MAX_MSG_RATE                       100
+
+# CHECK_NB_MSGS
+#     Limit the number of messages per connection
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_NB_MSGS                      YES
+
+# MAX_MSGS
+#     Maximum number of messages per connection 
+#  Syntax : -----
+MAX_MSGS                           100
+
+# CHECK_FROM_RCPT_RATE
+#     Limit recipient rate per from address
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_FROM_RCPT_RATE               NO
+
+# MAX_FROM_RCPT_RATE
+#     Max recipient rate per from address (can be redefined at j-policy database)
+#  Syntax : -----
+MAX_FROM_RCPT_RATE                 100
+
+# CHECK_NB_FROM_RCPT
+#     Check the number of recipients per from address for each message
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_NB_FROM_RCPT                 YES
+
+# MAX_FROM_RCPT
+#     Max recipient per message per from address 
+#  Syntax : -----
+MAX_FROM_RCPT                      200
+
+# CHECK_FROM_MSG_RATE
+#     Limit recipient rate per from address
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_FROM_MSG_RATE                YES
+
+# MAX_FROM_MSG_RATE
+#     Max message rate per from address (can be redefined at j-policy database)
+#  Syntax : -----
+MAX_FROM_MSG_RATE                  100
+
+# CHECK_FROM_NB_MSGS
+#     Limit the number of messages per from address
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_FROM_NB_MSGS                 YES
+
+# MAX_FROM_MSGS
+#     Maximum number of messages per from address
+#  Syntax : -----
+MAX_FROM_MSGS                      100
+
+########################################################################
+#    SECTION  :  Envelope checks
+########################################################################
+
+# REJECT_BADEHLO
+#     Check EHLO parameters
+#     VALUES :  NO  YES 
+REJECT_BADEHLO                     NO
+
+# BADEHLO_CHECKS
+#     EHLO parameter checks
+#  Syntax : InvalidChar,ForgedIP,NotBracketedIP,NotFQDN,IdentityTheft,Regex,All
+BADEHLO_CHECKS                     All
+
+# REJECT_BAD_NULL_SENDER
+#     Check Bad '<>' Sender Address
+#  Syntax : -----
+#     VALUES :  NO  YES 
+REJECT_BAD_NULL_SENDER             NO
+
+# CHECK_BAD_SENDER_MX
+#     Check Bad Sender MX
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_BAD_SENDER_MX                YES
+
+# DEFAULT_BAD_MX_REPLY
+#     Default BAD MX reply.
+#  Syntax : -----
+DEFAULT_BAD_MX_REPLY               421:4.5.1:Unreacheable domain. Try again later !
+
+########################################################################
+#    SECTION  :  Antispam checks (Miscelaneous)
+########################################################################
+
+# REJECT_DATE_IN_FUTURE
+#     Check if message date is far in the future (> 24 hours)
+#  Syntax : -----
+#     VALUES :  NO  YES 
+REJECT_DATE_IN_FUTURE              YES
+
+# REJECT_DATE_IN_PAST
+#     Check if message date is far in the past (> 1 year)
+#  Syntax : -----
+#     VALUES :  NO  YES 
+REJECT_DATE_IN_PAST                NO 
+
+# REJECT_SHORT_BODIES
+#     Reject messages whose body length is too short
+#  Syntax : -----
+#     VALUES :  NO  YES 
+REJECT_SHORT_BODIES                NO
+
+# MIN_BODY_LENGTH
+#     Minimum body length
+#  Syntax : -----
+MIN_BODY_LENGTH                    10
+
+# DROP_DELIVERY_NOTIFICATION_REQUEST
+#     Drop headers requesting delivery notification
+#  Syntax : -----
+#     VALUES :  NO  YES 
+DROP_DELIVERY_NOTIFICATION_REQUEST   NO
+
+# ENCODING_BINARY
+#     Full Binary encoded message (deprecated)
+#  Syntax : -----
+#     VALUES :  OK  REJECT  TEMPFAIL 
+ENCODING_BINARY                    OK
+
+# NO_TO_HEADERS
+#     Messages without To header (deprecated)
+#  Syntax : -----
+#     VALUES :  OK  REJECT  TEMPFAIL 
+NO_TO_HEADERS                      OK
+
+# NO_FROM_HEADERS
+#     Messages without From header (deprecated)
+#  Syntax : -----
+#     VALUES :  OK  REJECT  TEMPFAIL 
+NO_FROM_HEADERS                    OK
+
+# NO_HEADERS
+#     Messages with no header (deprecated)
+#  Syntax : -----
+#     VALUES :  OK  REJECT  TEMPFAIL 
+NO_HEADERS                         OK
+
+########################################################################
+#    SECTION  :  Reverse resolution of SMTP client IP address
+########################################################################
+
+# CHECK_RESOLVE_FAIL
+#     What to do if client DNS resolution fails
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_RESOLVE_FAIL                 NO
+
+# CHECK_RESOLVE_FORGED
+#     What to do if client DNS resolution is forged
+#  Syntax : -----
+#     VALUES :  NO  YES 
+CHECK_RESOLVE_FORGED               NO
+
+# MAX_BAD_RESOLVE
+#     ----
+#  Syntax : -----
+MAX_BAD_RESOLVE                    10
+
+# RESOLVE_FAIL_NETCLASS
+#     Resolve Fail NetClass
+#  Syntax : -----
+RESOLVE_FAIL_NETCLASS              
+
+# RESOLVE_FORGED_NETCLASS
+#     Resolve Forged NetClass
+#  Syntax : -----
+RESOLVE_FORGED_NETCLASS            
+
+########################################################################
+#    SECTION  :  Greylisting
+########################################################################
+
+# GREY_CHECK
+#     Enable greylisting filter
+#     VALUES :  NO  YES 
+GREY_CHECK                         YES
+
+# GREY_MODE
+#     Greylist mode
+#     VALUES :  STANDALONE  CLIENT 
+GREY_MODE                          STANDALONE
+
+# GREY_SOCKET
+#     Remote Greylist Server Socket when running in CLIENT mode
+#  Syntax : -----
+GREY_SOCKET                        inet:2012@127.0.0.1
+
+# GREY_CONNECT_TIMEOUT
+#     Timeout to connect go j-grey server when running in CLIENT mode
+#  Syntax : -----
+GREY_CONNECT_TIMEOUT               10s
+
+# GREY_MIN_DELAY_NORMAL
+#     Greylist delay for normal messages
+#  Syntax : -----
+GREY_MIN_DELAY_NORMAL              10m
+
+# GREY_MIN_DELAY_NULLSENDER
+#     Greylist delay for null sender messages
+#  Syntax : -----
+GREY_MIN_DELAY_NULLSENDER          10m
+
+# GREY_MAX_DELAY_NORMAL
+#     Lifetime for pending entries (normal messages)
+#  Syntax : -----
+GREY_MAX_DELAY_NORMAL              3d
+
+# GREY_MAX_DELAY_NULLSENDER
+#     Lifetime for pending entries (null sender messages)
+#  Syntax : -----
+GREY_MAX_DELAY_NULLSENDER          6h
+
+# GREY_VALIDLIST_LIFETIME
+#     Lifetime for inactive whitelisted entries
+#  Syntax : -----
+GREY_VALIDLIST_LIFETIME            1w
+
+# GREY_WHITELIST_LIFETIME
+#     Lifetime for inactive whitelisted entries
+#  Syntax : -----
+GREY_WHITELIST_LIFETIME            2w
+
+# GREY_BLACKLIST_LIFETIME
+#     Lifetime for blacklisted entries
+#  Syntax : -----
+GREY_BLACKLIST_LIFETIME            1d
+
+# GREY_MAX_PENDING_NORMAL
+#     Max normal pending messages
+GREY_MAX_PENDING_NORMAL            0
+
+# GREY_MAX_PENDING_NULLSENDER
+#     Max null sender pending messages
+GREY_MAX_PENDING_NULLSENDER        0
+
+# GREY_COMPAT_DOMAIN_CHECK
+#     Enable/disable domain compatibility (sender domain/SMTP client domain)
+#  Syntax : -----
+#     VALUES :  NO  YES 
+GREY_COMPAT_DOMAIN_CHECK           YES
+
+# GREY_IP_COMPONENT
+#     How to construct IP part of ntuple
+#  Syntax : NONE | FULL | NET
+GREY_IP_COMPONENT                  NET
+
+# GREY_FROM_COMPONENT
+#     How to construct FROM part of ntuple
+#  Syntax : NONE | FULL | HOST | USER
+GREY_FROM_COMPONENT                HOST
+
+# GREY_TO_COMPONENT
+#     How to construct TO part of ntuple
+#  Syntax : NONE | FULL | HOST | USER
+GREY_TO_COMPONENT                  FULL
+
+# GREY_REPLY
+#     Greylisting reply
+#  Syntax : 4nn:4.x.y:message
+GREY_REPLY                         451:4.3.2:Temporary failure ! Come back later, please !
+
+# GREY_CLEANUP_INTERVAL
+#     Greylist database cleanup interval
+#  Syntax : -----
+GREY_CLEANUP_INTERVAL              10m
+
+# GREY_DEWHITE_FLAGS
+#     Which criteria utilise to purge greylisting databases ???
+#  Syntax : None BadResolve DomainMismatch BadRCPT SpamTrap BadMX BadClient Spammer All
+GREY_DEWHITE_FLAGS                 DomainMismatch
+
+# GREY_LOG_FILE
+#     The expired entries log file
+GREY_LOG_FILE                      file:j-grey-expire
+
+########################################################################
+#    SECTION  :  Greylisting - j-greyd specific
+########################################################################
+
+# GREYD_SOCKET_LISTEN
+#     j-greyd Listen Socket
+#  Syntax : -----
+GREYD_SOCKET_LISTEN                inet:2012@0.0.0.0
+
+# GREYD_LOG_FACILITY
+#     syslog facility
+#  Syntax : -----
+GREYD_LOG_FACILITY                 local6
+
+# GREYD_LOG_LEVEL
+#     j-greyd log level
+#  Syntax : -----
+GREYD_LOG_LEVEL                    10
+
+# GREYDDIR
+#     j-greyd working directory
+#  Syntax : -----
+GREYDDIR                           /var/lib/jchkmail/jgreydb
+
+# GREYD_PID_FILE
+#     j-greyd pid file
+#  Syntax : -----
+GREYD_PID_FILE                     /var/run/jchkmail/j-greyd.pid
+
+# GREYD_CLIENT_IDLE_MAX
+#     Maximum inactivity time (after this connection will be closed)
+#  Syntax : -----
+GREYD_CLIENT_IDLE_MAX              300
+
