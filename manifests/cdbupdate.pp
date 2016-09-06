@@ -1,3 +1,7 @@
+# Class jchkmail::cdbupdate
+# =========================
+#
+#
 class jchkmail::cdbupdate
 {
   exec {

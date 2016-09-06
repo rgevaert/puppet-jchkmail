@@ -1,3 +1,7 @@
+# Class jchkmail::service
+# =======================
+#
+#
 class jchkmail::service
 {
   service {

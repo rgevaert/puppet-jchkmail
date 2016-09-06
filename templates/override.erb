@@ -1,0 +1,10 @@
+#######################################
+## Override parameters for j-chkmail ##
+#######################################
+
+<% unless scope.lookupvar('jchkmail::config').empty? -%>
+# Override configuration put here by Puppet through jchkmail::config hash
+<% scope.lookupvar('jchkmail::config').sort.map do |key, value| -%>
+<%= key %> <%= value %>
+<% end -%>
+<% end -%>

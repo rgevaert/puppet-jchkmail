@@ -9,8 +9,14 @@ You can override the default config:
 
     class {
       'jchkmail':
-        jchkmailcf => <path>,
         jndccf     => <path>;
+    }
+
+Override j-chkmail.cfg can be defined by the user by passing a hash
+
+    $config = {
+      'PRESENCE'     => 'HIDE',
+      'MAX_BADRCPTS' => '100'
     }
 
 Defining the maps
