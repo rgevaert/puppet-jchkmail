@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'jchkmail::cdb' do
   let :title do
-    '/etc/jchkmail/cdb/mysource'
+    'mycdb'
   end
 
   on_supported_os.each do |os, facts|
@@ -10,22 +10,41 @@ describe 'jchkmail::cdb' do
       let(:facts) do
         facts
       end
-      
-      let :params do
-        {
-          :source => '/etc/jchkmail/cdb/mysource'
-        }
+
+      context "with source parameter" do
+        let :params do
+          {
+            :source => '/location/mycdb'
+          }
+        end
+        it { is_expected.to contain_file('mycdb').with(
+          :ensure  => 'present',
+          :owner   => 'root',
+          :group   => 'root',
+          :mode    => '0644',
+          :path    => '/etc/jchkmail/cdb/mycdb',
+          :notify  => 'Class[Jchkmail::Cdbupdate]',
+          :source  => '/location/mycdb',
+          :content => nil) }
       end
 
-      context "with custom cdb parameters" do
-        it { is_expected.to contain_file('/etc/jchkmail/cdb/mysource').with(
-          :ensure => 'present',
-          :owner  => 'root',
-          :group  => 'root',
-          :mode   => '0644',
-          :notify => 'Class[Jchkmail::Cdbupdate]',
-          :source => '/etc/jchkmail/cdb/mysource',) }
+      context "with template parameter" do
+        let :params do
+          {
+            :template => 'jchkmail/cdb.erb'
+          }
+        end
+        it { is_expected.to contain_file('mycdb').with(
+          :ensure  => 'present',
+          :owner   => 'root',
+          :group   => 'root',
+          :mode    => '0644',
+          :path    => '/etc/jchkmail/cdb/mycdb',
+          :notify  => 'Class[Jchkmail::Cdbupdate]',
+          :source  => nil,
+          :content => /^# Sample cdb erb$/,) }
       end
+
     end
   end
 end
